@@ -12,7 +12,8 @@ export default function Home() {
     <main className="min-h-screen w-full bg-background text-foreground">
       <AppleHero
         title="SITTINON CHANPRATHUM"
-        subtitle="Crafting intelligent digital experiences through elegant code and modern web technologies."
+        // subtitleThai="นักพัฒนาซอฟต์แวร์ที่พร้อมเรียนรู้เทคโนโลยีใหม่ๆ เพื่อรังสรรค์ผลงานดิจิทัลที่มีคุณค่าในระยะยาว"
+        subtitleEng="A software developer dedicated to learning new technologies and crafting lasting digital value."
       />
       <Experience />
       <Projects />

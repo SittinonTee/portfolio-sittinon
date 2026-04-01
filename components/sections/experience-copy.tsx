@@ -56,7 +56,7 @@ export function ExperienceCopy() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-white to-gray-400 mb-4">
-            Professional Experience
+            Work Experience
           </h2>
           <div className="h-1 w-20 bg-blue-500 mx-auto rounded-full" />
         </motion.div>

@@ -41,7 +41,7 @@ const skillCategories = [
   {
     title: "DevOps & Tools",
     icon: <Wrench className="w-5 h-5 text-foreground" />,
-    skills: ["Git", "Docker", "Vercel / Render", "Postman"],
+    skills: ["Git", "Docker", "Vercel / Render", "Postman", "Figma"],
   },
 ];
 

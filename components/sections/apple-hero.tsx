@@ -7,25 +7,40 @@ import { ResumeModal } from "../resume-modal";
 
 interface AppleHeroProps {
   title: string;
-  subtitle: string;
+  subtitleEng: string;
 }
 
-export function AppleHero({ title, subtitle }: AppleHeroProps) {
+export function AppleHero({ title, subtitleEng }: AppleHeroProps) {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
     <section className="relative w-full h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-background">
       {/* CSS Animation for the Titanium Shine */}
       <style>{`
+        :root {
+          --hero-g1: #0d9488;
+          --hero-g2: #0891b2;
+          --hero-g3: #1e40af;
+        }
+
+        .dark {
+          --hero-g1: #d3f3eb;
+          --hero-g2: #90c5c6;
+          --hero-g3: #466c82;
+        }
+
         .gradient-text {
           background: linear-gradient(
             90deg,
-            #d3f3eb 0%,
-            #90c5c6 50%,
-            #466c82 100%
+            var(--hero-g1) 0%,
+            var(--hero-g2) 50%,
+            var(--hero-g3) 100%
           );
           -webkit-background-clip: text;
+          -webkit-background-clip: text;
+          background-clip: text;
           -webkit-text-fill-color: transparent;
+          color: transparent;
         }
       `}</style>
 
@@ -40,12 +55,12 @@ export function AppleHero({ title, subtitle }: AppleHeroProps) {
           initial={{ opacity: 0, scale: 0.95, y: 50 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-8"
+          className="mb-6 md:mb-8"
         >
-          <span className="text-muted-foreground font-semibold tracking-widest text-sm md:text-base uppercase mb-8 block">
+          <span className="text-muted-foreground font-semibold tracking-widest text-xs md:text-base uppercase mb-4 md:mb-8 block">
             Meet the Developer
           </span>
-          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] font-bold tracking-tighter leading-none gradient-text pb-4 px-2">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[8rem] font-bold tracking-tighter leading-[1.1] md:leading-none gradient-text pb-4 px-2">
             {title}
           </h1>
         </motion.div>
@@ -54,9 +69,13 @@ export function AppleHero({ title, subtitle }: AppleHeroProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="space-y-4 px-4"
         >
-          <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-medium tracking-tight max-w-3xl mx-auto leading-relaxed">
-            {subtitle}
+          {/* <p className="text-xl md:text-2xl lg:text-3xl text-foreground font-medium tracking-tight max-w-3xl mx-auto leading-relaxed">
+            {subtitleThai}
+          </p> */}
+          <p className="text-base md:text-xl lg:text-2xl text-muted-foreground font-medium tracking-tight max-w-2xl mx-auto leading-relaxed opacity-80">
+            {subtitleEng}
           </p>
         </motion.div>
 
@@ -73,7 +92,7 @@ export function AppleHero({ title, subtitle }: AppleHeroProps) {
           >
             Work Experience
           </a>
-          <a
+          {/* <a
             href="#projects"
             className="px-10 py-4 rounded-full bg-secondary border border-border text-secondary-foreground font-semibold text-lg hover:bg-secondary/80 transition-colors duration-300 flex items-center justify-center gap-2 group"
           >
@@ -81,7 +100,7 @@ export function AppleHero({ title, subtitle }: AppleHeroProps) {
             <span className="group-hover:translate-x-1 transition-transform inline-block">
               →
             </span>
-          </a>
+          </a> */}
           <button
             type="button"
             onClick={() => setIsResumeOpen(true)}

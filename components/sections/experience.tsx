@@ -14,7 +14,7 @@ const projects = [
     descriptionEng:
       "Developed a full-stack job fair platform supporting Candidate, Company, and Admin roles. Built securely with Next.js (App Router), TypeScript, Prisma, and PostgreSQL.",
     descriptionThai:
-      "RSU Job Fair คือแพลตฟอร์มศูนย์กลางที่เชื่อมโยงนักศึกษามหาวิทยาลัยรังสิตเข้ากับองค์กรชั้นนำระดับประเทศอย่างไร้รอยต่อ รวบรวมฟีเจอร์สำคัญไว้ครบครัน ทั้งการสร้างโปรไฟล์เรซูเม่ ค้นหาตำแหน่งงาน ไปจนถึงการติดตามสถานะการสมัครและการนัดหมายสัมภาษณ์แบบเรียลไทม์",
+      "RSU Job Fair คือแพลตฟอร์มศูนย์กลางที่เชื่อมโยงนักศึกษามหาวิทยาลัยรังสิตเข้ากับองค์กรชั้นนำ รวบรวมฟีเจอร์สำคัญไว้ครบครัน ทั้งการสร้างโปรไฟล์เรซูเม่ ค้นหาตำแหน่งงาน ไปจนถึงการติดตามสถานะการสมัครและการนัดหมายสัมภาษณ์",
     technologies: [
       "Next.js",
       "React",
@@ -26,11 +26,29 @@ const projects = [
     ],
     href: "/projects/rsu-job-fair",
     dates: "Jan 2026 - Feb 2026",
-    // 1 work สามารถใส่หลายรูปได้ ให้ใส่เพิ่มลงใน array นี้เรียงกันเลยครับ
     images: [
       "/images/work/rsu/1.png",
       "/images/work/rsu/2.png",
-      // "/images/projects/rsu-job-fair-2.jpg",
+      "/images/work/rsu/3.png",
+      "/images/work/rsu/4.png",
+      "/images/work/rsu/5.png",
+      "/images/work/rsu/6.png",
+      "/images/work/rsu/7.png",
+      "/images/work/rsu/8.png",
+      "/images/work/rsu/9.png",
+      "/images/work/rsu/10.png",
+      "/images/work/rsu/11.png",
+      "/images/work/rsu/12.png",
+      "/images/work/rsu/13.png",
+      "/images/work/rsu/14.png",
+      "/images/work/rsu/15.png",
+      "/images/work/rsu/16.png",
+      "/images/work/rsu/17.png",
+      "/images/work/rsu/18.png",
+      "/images/work/rsu/19.png",
+      "/images/work/rsu/20.png",
+      "/images/work/rsu/21.png",
+      "/images/work/rsu/22.png",
     ],
   },
 
@@ -112,14 +130,14 @@ export function Experience() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-foreground to-muted-foreground mb-4">
-            Professional Experience
+            Work Experience
           </h2>
           <div className="h-1 w-20 bg-primary mx-auto rounded-full" />
         </motion.div>
 
-        <div className="w-full bg-card rounded-[2.5rem] p-8 md:p-12 lg:p-16 flex flex-col md:flex-row gap-8 items-center border border-border shadow-2xl overflow-hidden relative">
+        <div className="w-full bg-card rounded-[2.5rem] p-8 md:p-12 lg:p-16 flex flex-col-reverse lg:flex-row gap-8 items-center border border-border shadow-2xl overflow-hidden relative">
           {/* ฝั่งซ้าย: เมนู Accordion */}
-          <div className="w-full md:w-5/12 flex flex-col gap-3 z-10">
+          <div className="w-full lg:w-5/12 flex flex-col gap-3 z-10">
             {projects.map((project, index) => {
               const isActive = activeFeature === index;
 
@@ -137,7 +155,7 @@ export function Experience() {
                   style={{ originX: 0 }}
                 >
                   {isActive ? (
-                    // 🟢 สถานะเมื่อถูกเลือก (กล่องข้อความใหญ่)
+                    // สถานะเมื่อถูกเลือก (กล่องข้อความใหญ่)
                     <motion.div
                       layout="position"
                       initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
@@ -151,7 +169,7 @@ export function Experience() {
                       className="w-full"
                     >
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
-                        <strong className="text-foreground text-base">
+                        <strong className="t text-base text-[#4eacfa]">
                           {project.title}
                         </strong>
                         {project.dates && (
@@ -183,7 +201,7 @@ export function Experience() {
                       )}
                     </motion.div>
                   ) : (
-                    // ⚪️ สถานะตอนไม่ถูกเลือก (ปุ่มกดเล็กๆ)
+                    //  สถานะตอนไม่ถูกเลือก (ปุ่มกดเล็กๆ)
                     <motion.div
                       layout="position"
                       initial={{ opacity: 0 }}
@@ -212,7 +230,7 @@ export function Experience() {
           </div>
 
           {/* ฝั่งขวา: รูปภาพ */}
-          <div className="w-full md:w-7/12 aspect-[4/3] md:aspect-[16/10] relative flex items-center justify-center group">
+          <div className="w-full lg:w-7/12 aspect-[4/3] lg:aspect-[16/10] relative flex items-center justify-center group">
             <AnimatePresence mode="wait">
               {projects[activeFeature].images?.length > 0 && (
                 <motion.div

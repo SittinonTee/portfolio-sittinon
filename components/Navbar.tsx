@@ -59,6 +59,11 @@ export default function Navbar() {
           <Button
             size="sm"
             className="bg-button-bg hover:bg-button-hover text-white rounded-full px-5 transition-all"
+            onClick={() =>
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
           >
             Contact
             <ArrowRight className="ml-2 h-4 w-4" />

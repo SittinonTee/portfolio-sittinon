@@ -13,30 +13,120 @@ import { useEffect, useState } from "react";
 
 const projects = [
   {
-    title: "Movie Ticket Booking",
-    thaiTitle: "ระบบจองตั๋วหนัง",
+    title: "Salad Ordering & Menu Management System",
+    thaiTitle: "ระบบสั่งสลัดและจัดการเมนู",
     descriptionEng:
-      "A comprehensive movie ticket booking platform allowing users to browse movies, select seats, and purchase tickets seamlessly.",
+      "A comprehensive salad ordering platform built with Next.js, featuring menu categorization, real-time management, and a responsive Material UI design.",
     descriptionThai:
-      "ระบบจองตั๋วหนังแบบครบวงจร ที่ช่วยให้ผู้ใช้สามารถเลือกดูภาพยนตร์, เลือกที่นั่ง และซื้อตั๋วได้อย่างราบรื่น",
+      "แพลตฟอร์มสั่งสลัดออนไลน์ที่พัฒนาด้วย Next.js รองรับการแยกหมวดหมู่อาหาร การจัดการเมนูแบบเรียลไทม์ และดีไซน์ที่สวยงามด้วย Material UI",
     image:
-      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop", // รูปภาพแทนสื่อถึงสลัด
     images: [
-      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop",
-      // สามารถเพิ่มรูปอื่นๆ ลงในวงเล็บนี้ได้เลยครับ แนะนำให้ใช้ขนาดใกล้เคียงกัน
+      "/images/projects/salad/1.png",
+      "/images/projects/salad/2.png",
+      "/images/projects/salad/3.png",
+      "/images/projects/salad/4.png",
+      "/images/projects/salad/5.png",
+      "/images/projects/salad/6.png",
+      "/images/projects/salad/7.png",
+      "/images/projects/salad/8.png",
     ],
-    tags: ["java", "netbeans"],
-    color: "from-blue-500/20 to-purple-500/20",
+    tags: ["Next.js", "Material UI", "MySQL", "React"],
+    color: "from-emerald-500/20 to-green-500/20", // ใช้โทนสีเขียวเพื่อให้เข้ากับสลัด
+    borderGlow:
+      "group-hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] group-hover:shadow-emerald-500/20",
+  },
+  {
+    title: "Personal Tax Management System",
+    thaiTitle: "ระบบจัดการภาษีส่วนบุคคล",
+    descriptionEng:
+      "A cross-platform mobile application built with Flutter and Express.js for tracking personal income, managing tax deductions, and performing automated tax calculations based on Thai tax rules.",
+    descriptionThai:
+      "แอปพลิเคชันมือถือสำหรับบันทึกรายได้และจัดการค่าลดหย่อนภาษี พัฒนาด้วย Flutter และ Express.js พร้อมระบบคำนวณภาษีอัตโนมัติตามโครงสร้างภาษีเงินได้บุคคลธรรมดา",
+    image:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop", // รูปภาพสื่อถึงการคำนวณภาษี/บัญชี
+    images: [
+      "/images/projects/tax/1.png",
+      "/images/projects/tax/2.png",
+      "/images/projects/tax/3.png",
+      "/images/projects/tax/4.png",
+      "/images/projects/tax/5.png",
+      "/images/projects/tax/6.png",
+      "/images/projects/tax/7.png",
+      "/images/projects/tax/8.png",
+    ],
+    tags: ["Flutter", "Express.js", "MySQL", "Node.js"],
+    color: "from-blue-500/20 to-indigo-500/20", // ใช้โทนสีน้ำเงินสื่อถึงความน่าเชื่อถือและการเงิน
     borderGlow:
       "group-hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] group-hover:shadow-blue-500/20",
   },
+  {
+    title: "Cross-Platform Seamless File Transfer",
+    thaiTitle: "ระบบส่งไฟล์ข้ามแพลตฟอร์ม",
+    descriptionEng:
+      "A conceptual UI/UX design for a seamless cross-platform file sharing application, designed in Figma with focus on accessibility and multi-device support.",
+    descriptionThai:
+      "โปรเจกต์ออกแบบ UI/UX สำหรับระบบส่งไฟล์ข้ามแพลตฟอร์มแบบไร้รอยต่อ ออกแบบใน Figma ครอบคลุมทั้ง Web, iOS (iPhone) และ iPadOS (iPad)",
+    image: "/images/figma/Web_Home.png",
+    images: [
+      "/images/figma/Web_Home.png",
+      "/images/figma/Web_Signin.png",
+      "/images/figma/Web_Register.png",
+      "/images/figma/Web_Addfriend.png",
+      "/images/figma/Web_Accept.png",
+      "/images/figma/Web_Load.png",
+      "/images/figma/Web_Qr.png",
+      "/images/figma/Web_Share.png",
+      "/images/figma/iPhone_Home.png",
+      "/images/figma/iPhone_Signin.png",
+      "/images/figma/iPhone_Register.png",
+      "/images/figma/iPhone_Adfriend.png",
+      "/images/figma/iPhone_Accept.png",
+      "/images/figma/iPhone_Load.png",
+      "/images/figma/iPhone_Qr.png",
+      "/images/figma/iPhone_Share.png",
+      "/images/figma/ipad_Home.png",
+      "/images/figma/ipad_Signin.png",
+      "/images/figma/ipad_Register.png",
+      "/images/figma/ipad_Addfriend.png",
+      "/images/figma/ipad_Accept.png",
+      "/images/figma/ipad_Load.png",
+      "/images/figma/ipad_Qr.png",
+      "/images/figma/ipad_Share.png",
+    ],
+    tags: ["Figma", "UI/UX"],
+    color: "from-purple-500/20 to-blue-500/20",
+    borderGlow:
+      "group-hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] group-hover:shadow-purple-500/20",
+  },
+  {
+    title: "Mall Management",
+    thaiTitle: "จัดการเช่าพื้นที่ห้างสรรพสินค้า",
+    descriptionEng:
+      "A backend service and dashboard for managing shopping mall operations, tenant space allocations, and facility maintenance.",
+    descriptionThai:
+      "ระบบจัดการพื้นที่เช่าในห้างสรรพสินค้า ที่ช่วยให้ผู้ใช้สามารถจัดการพื้นที่เช่า, การจัดสรรพื้นที่ ได้อย่างมีประสิทธิภาพ",
+    image:
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop",
+    images: [
+      "/images/projects/mall/1.png",
+      "/images/projects/mall/2.png",
+      "/images/projects/mall/3.png",
+      "/images/projects/mall/4.png",
+      "/images/projects/mall/5.png",
+    ],
+    tags: ["java", "netbeans"],
+    color: "from-emerald-500/20 to-cyan-500/20",
+    borderGlow:
+      "group-hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] group-hover:shadow-emerald-500/20",
+  },
+
   {
     title: "Pizza Selling System",
     thaiTitle: "ร้านขายพิซซ่า",
     descriptionEng:
       "An online pizza ordering system emphasizing quick customization of orders and real-time delivery tracking.",
-    descriptionThai:
-      "ระบบสั่งพิซซ่าออนไลน์ที่เน้นการปรับแต่งคำสั่งซื้อได้อย่างรวดเร็วและการติดตามการจัดส่งแบบเรียลไทม์",
+    descriptionThai: "ระบบสั่งพิซซ่าออนไลน์ที่ พัฒนาด้วย java และ netbeans",
     image:
       "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800&auto=format&fit=crop",
     images: [
@@ -46,35 +136,29 @@ const projects = [
       "/images/projects/pizza/2.png",
       "/images/projects/pizza/3.png",
       "/images/projects/pizza/4.png",
-      // สามารถเพิ่มรูปอื่นๆ ลงในวงเล็บนี้ได้เลยครับ
     ],
     tags: ["java", "netbeans"],
     color: "from-orange-500/20 to-red-500/20",
     borderGlow:
       "group-hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] group-hover:shadow-orange-500/20",
   },
-  {
-    title: "Mall Management",
-    thaiTitle: "จัดการเช่าพื้นที่ห้างสรรพสินค้า",
-    descriptionEng:
-      "A backend service and dashboard for managing shopping mall operations, tenant space allocations, and facility maintenance.",
-    descriptionThai:
-      "ระบบจัดการพื้นที่เช่าในห้างสรรพสินค้า ที่ช่วยให้ผู้ใช้สามารถจัดการพื้นที่เช่า, การจัดสรรพื้นที่ และการบำรุงรักษาอาคารได้อย่างมีประสิทธิภาพ",
-    image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop",
-    images: [
-      "/images/projects/mall/1.png",
-      "/images/projects/mall/2.png",
-      "/images/projects/mall/3.png",
-      "/images/projects/mall/4.png",
-      "/images/projects/mall/5.png",
-      // เพิ่มรูปอื่นๆ เช่น "/images/projects/mall/2.png", "/images/projects/mall/3.png"
-    ],
-    tags: ["java", "netbeans"],
-    color: "from-emerald-500/20 to-cyan-500/20",
-    borderGlow:
-      "group-hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] group-hover:shadow-emerald-500/20",
-  },
+  // {
+  //   title: "Movie Ticket Booking",
+  //   thaiTitle: "ระบบจองตั๋วหนัง",
+  //   descriptionEng:
+  //     "A comprehensive movie ticket booking platform allowing users to browse movies, select seats, and purchase tickets seamlessly.",
+  //   descriptionThai:
+  //     "ระบบจองตั๋วหนังแบบครบวงจร ที่ช่วยให้ผู้ใช้สามารถเลือกดูภาพยนตร์, เลือกที่นั่ง และซื้อตั๋วได้อย่างราบรื่น",
+  //   image:
+  //     "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop",
+  //   images: [
+  //     "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop",
+  //   ],
+  //   tags: ["java", "netbeans"],
+  //   color: "from-blue-500/20 to-purple-500/20",
+  //   borderGlow:
+  //     "group-hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] group-hover:shadow-blue-500/20",
+  // },
 ];
 
 export function Projects() {
@@ -204,9 +288,9 @@ export function Projects() {
                   </div>
                 </div>
 
-                <p className="text-muted-foreground text-sm mb-6 line-clamp-3">
+                {/* <p className="text-muted-foreground text-sm mb-6 line-clamp-3">
                   {project.descriptionEng}
-                </p>
+                </p> */}
 
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {project.tags.map((tag) => (
@@ -239,7 +323,7 @@ export function Projects() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-6xl bg-card rounded-[2rem] border border-border shadow-2xl flex flex-col md:flex-row overflow-hidden max-h-[90vh]"
+              className="relative w-full max-w-6xl bg-card rounded-[2rem] border border-border shadow-2xl flex flex-col lg:flex-row overflow-hidden max-h-[90vh]"
             >
               <button
                 type="button"
@@ -250,7 +334,7 @@ export function Projects() {
               </button>
 
               {/* ฝั่งซ้าย: รูปภาพ Carousel */}
-              <div className="w-full md:w-2/3 bg-background/50 relative flex items-center justify-center min-h-[300px] md:min-h-[500px]">
+              <div className="w-full lg:w-2/3 bg-background/50 relative flex items-center justify-center min-h-[300px] md:min-h-[500px]">
                 <AnimatePresence mode="wait">
                   <Image
                     key={
@@ -311,7 +395,7 @@ export function Projects() {
               </div>
 
               {/* ฝั่งขวา: รายละเอียด (Info) */}
-              <div className="w-full md:w-1/3 p-6 md:p-10 flex flex-col overflow-y-auto border-t md:border-t-0 md:border-l border-border bg-card">
+              <div className="w-full lg:w-1/3 p-6 md:p-10 flex flex-col overflow-y-auto border-t lg:border-t-0 lg:border-l border-border bg-card">
                 <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
                   {selectedProject.title}
                 </h3>
@@ -323,9 +407,9 @@ export function Projects() {
                   <p className="text-muted-foreground text-sm md:text-[15px] leading-relaxed">
                     {selectedProject.descriptionThai}
                   </p>
-                  <p className="text-muted-foreground text-sm md:text-[15px] leading-relaxed opacity-80">
+                  {/* <p className="text-muted-foreground text-sm md:text-[15px] leading-relaxed opacity-80">
                     {selectedProject.descriptionEng}
-                  </p>
+                  </p> */}
                 </div>
 
                 <div className="mt-auto">

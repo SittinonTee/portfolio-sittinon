@@ -1,5 +1,14 @@
 "use client";
-import { Facebook, Frame, Instagram, Linkedin, Youtube } from "lucide-react";
+import {
+  ArrowUpRight,
+  Code2,
+  FileText,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import type React from "react";
 import type { ComponentProps, ReactNode } from "react";
@@ -17,80 +26,127 @@ interface FooterSection {
 
 const footerLinks: FooterSection[] = [
   {
-    label: "Product",
+    label: "Navigation",
     links: [
-      { title: "Features", href: "#features" },
-      { title: "Pricing", href: "#pricing" },
-      { title: "Testimonials", href: "#testimonials" },
-      { title: "Integration", href: "/" },
+      { title: "Home", href: "#" },
+      { title: "Experience", href: "#experience" },
+      { title: "Projects", href: "#projects" },
+      { title: "Skills", href: "#skills" },
+      { title: "Education", href: "#education" },
     ],
   },
   {
-    label: "Company",
+    label: "Contact",
     links: [
-      { title: "FAQs", href: "/faqs" },
-      { title: "About Us", href: "/about" },
-      { title: "Privacy Policy", href: "/privacy" },
-      { title: "Terms of Services", href: "/terms" },
+      {
+        title: "sittinon.pc@gmail.com",
+        href: "mailto:sittinon.pc@gmail.com",
+        icon: Mail,
+      },
+      { title: "063-416-9328", href: "tel:063-416-9328", icon: Phone },
+      { title: "Bangkok, Thailand", href: "#", icon: MapPin },
     ],
   },
   {
-    label: "Resources",
+    label: "Connect",
     links: [
-      { title: "Blog", href: "/blog" },
-      { title: "Changelog", href: "/changelog" },
-      { title: "Brand", href: "/brand" },
-      { title: "Help", href: "/help" },
-    ],
-  },
-  {
-    label: "Social Links",
-    links: [
-      { title: "Facebook", href: "#", icon: Facebook },
-      { title: "Instagram", href: "#", icon: Instagram },
-      { title: "Youtube", href: "#", icon: Youtube },
-      { title: "LinkedIn", href: "#", icon: Linkedin },
+      { title: "GitHub", href: "https://github.com/SittinonTee", icon: Github },
+      {
+        title: "LinkedIn",
+        href: "https://www.linkedin.com/in/sittinon-chanprathum/",
+        icon: Linkedin,
+      },
     ],
   },
 ];
 
 export function Footer() {
   return (
-    <footer className="md:rounded-t-6xl relative w-full mx-auto flex flex-col items-center justify-center rounded-t-4xl border-t dark:bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.black/8%),transparent)] px-6 py-12 lg:py-16">
-      <div className="bg-foreground/20 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
+    <section className="w-full bg-background" id="contact">
+      <footer className="relative w-full mx-auto flex flex-col items-center justify-center rounded-t-[3rem] border-t border-border/50 dark:bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/5%),transparent)] bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.black/5%),transparent)] px-6 py-12 lg:py-20 overflow-hidden">
+        {/* Subtle glow effect */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-linear-to-r from-transparent via-primary/30 to-transparent" />
 
-      <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
-        <AnimatedContainer className="space-y-4">
-          <Frame className="size-8" />
-          <p className="text-muted-foreground mt-8 text-sm md:mt-0">
-            © {new Date().getFullYear()} Asme. All rights reserved.
-          </p>
-        </AnimatedContainer>
-
-        <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
-          {footerLinks.map((section, index) => (
-            <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
-              <div className="mb-10 md:mb-0">
-                <h3 className="text-xs">{section.label}</h3>
-                <ul className="text-muted-foreground mt-4 space-y-2 text-sm">
-                  {section.links.map((link) => (
-                    <li key={link.title}>
-                      <a
-                        href={link.href}
-                        className="hover:text-foreground inline-flex items-center transition-all duration-300"
-                      >
-                        {link.icon && <link.icon className="me-1 size-4" />}
-                        {link.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+        <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          <AnimatedContainer className="space-y-6 lg:col-span-1">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-primary/10 rounded-lg border border-primary/20">
+                <Code2 className="size-6 text-primary" />
               </div>
-            </AnimatedContainer>
-          ))}
+              <span className="text-xl font-bold tracking-tight">
+                Sittinon.dev
+              </span>
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
+              A software developer dedicated to learning new technologies and
+              crafting lasting digital value.
+            </p>
+            <div className="flex items-center gap-4">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-xs font-semibold hover:bg-secondary/80 transition-colors border border-border"
+              >
+                <FileText className="size-3.5" />
+                View Resume
+                <ArrowUpRight className="size-3.5" />
+              </a>
+            </div>
+          </AnimatedContainer>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 md:col-span-1 lg:col-span-3">
+            {footerLinks.map((section, index) => (
+              <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
+                <div className="space-y-6">
+                  <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-foreground/50">
+                    {section.label}
+                  </h3>
+                  <ul className="space-y-4">
+                    {section.links.map((link) => (
+                      <li key={link.title}>
+                        <a
+                          href={link.href}
+                          target={
+                            link.href.startsWith("http") ? "_blank" : undefined
+                          }
+                          rel={
+                            link.href.startsWith("http")
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
+                          className="group flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
+                        >
+                          {link.icon && (
+                            <link.icon className="mr-2.5 size-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                          )}
+                          <span className="relative">
+                            {link.title}
+                            <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </AnimatedContainer>
+            ))}
+          </div>
         </div>
-      </div>
-    </footer>
+
+        <div className="mt-20 pt-8 w-full border-t border-border/30 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-muted-foreground text-xs font-medium">
+            © {new Date().getFullYear()} Sittinon Chanprathum. Built with
+            Next.js & Tailwind.
+          </p>
+          <div className="flex items-center gap-6">
+            <span className="text-[10px] text-muted-foreground uppercase tracking-widest bg-secondary/50 px-3 py-1 rounded-full border border-border/50">
+              Handcrafted with ❤️
+            </span>
+          </div>
+        </div>
+      </footer>
+    </section>
   );
 }
 
@@ -113,10 +169,10 @@ function AnimatedContainer({
 
   return (
     <motion.div
-      initial={{ filter: "blur(4px)", translateY: -8, opacity: 0 }}
-      whileInView={{ filter: "blur(0px)", translateY: 0, opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay, duration: 0.8 }}
+      initial={{ y: 20, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ delay, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}

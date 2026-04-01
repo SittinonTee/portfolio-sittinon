@@ -15,7 +15,7 @@ const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost:
-          "text-white/90 hover:bg-white/10 hover:text-white aria-expanded:bg-muted aria-expanded:text-foreground",
+          "hover:bg-accent hover:text-accent-foreground aria-expanded:bg-muted aria-expanded:text-foreground",
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
@@ -59,7 +59,7 @@ function Button({
       {...props}
     >
       <span className="relative z-10 flex items-center">{props.children}</span>
-      <div className="absolute inset-0 -top-2 -bottom-2 bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover/button:translate-x-full transition-transform duration-1000 ease-out" />
+      <div className="absolute inset-0 -top-2 -bottom-2 bg-linear-to-r from-transparent via-foreground/20 to-transparent skew-x-12 -translate-x-full group-hover/button:translate-x-full transition-transform duration-1000 ease-out" />
     </Comp>
   );
 }
