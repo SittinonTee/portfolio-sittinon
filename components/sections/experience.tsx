@@ -10,6 +10,7 @@ const projects = [
   {
     id: "rsu-job-fair",
     title: "RSU Job Fair Platform",
+    company: "Rangsit University",
     // 1. แยก Eng และ Thai ให้เหมือนกับ Object ด้านล่าง
     descriptionEng:
       "Developed a full-stack job fair platform supporting Candidate, Company, and Admin roles. Built securely with Next.js (App Router), TypeScript, Prisma, and PostgreSQL.",
@@ -55,6 +56,7 @@ const projects = [
   {
     id: "leave-system",
     title: "Leave Management System",
+    company: "iRecruit (Thailand) Co., Ltd.",
     descriptionEng:
       "Developed a comprehensive Leave Management System featuring an employee portal for requests and an HR admin dashboard. Key features include organization-wide leave quota management, real-time balance tracking, and modification history logging.",
     descriptionThai:
@@ -168,15 +170,22 @@ export function Experience() {
                       }}
                       className="w-full"
                     >
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
-                        <strong className="t text-base text-[#4eacfa]">
-                          {project.title}
-                        </strong>
-                        {project.dates && (
-                          <span className="text-[11px] font-medium text-secondary-foreground bg-foreground/10 px-2.5 py-1 rounded-md tracking-wide w-fit">
-                            {project.dates}
-                          </span>
-                        )}
+                      <div className="flex flex-col mb-3">
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+                          <div className="flex flex-col">
+                            <strong className="text-foreground text-base leading-tight">
+                              {project.title}
+                            </strong>
+                            <span className="text-[13px] text-blue-500 mt-1">
+                              {project.company}
+                            </span>
+                          </div>
+                          {project.dates && (
+                            <span className="text-[11px] font-medium text-secondary-foreground bg-foreground/10 px-2.5 py-1 rounded-md tracking-wide w-fit shrink-0">
+                              {project.dates}
+                            </span>
+                          )}
+                        </div>
                       </div>
                       <p className="text-sm md:text-[15px] leading-relaxed text-muted-foreground">
                         {project.descriptionThai}
@@ -213,9 +222,14 @@ export function Experience() {
                         <div className="w-6 h-6 rounded-full border border-muted-foreground flex items-center justify-center bg-muted text-foreground shrink-0">
                           <Plus className="w-3.5 h-3.5" />
                         </div>
-                        <span className="font-semibold text-[15px] truncate text-foreground">
-                          {project.title}
-                        </span>
+                        <div className="flex flex-col min-w-0">
+                          <span className="font-semibold text-[15px] truncate text-foreground leading-tight">
+                            {project.title}
+                          </span>
+                          <span className="text-[11px] text-muted-foreground truncate">
+                            {project.company}
+                          </span>
+                        </div>
                       </div>
                       {project.dates && (
                         <span className="text-xs text-muted-foreground shrink-0 ml-3 hidden sm:block">
