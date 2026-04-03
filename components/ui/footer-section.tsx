@@ -39,8 +39,8 @@ const footerLinks: FooterSection[] = [
     label: "Contact",
     links: [
       {
-        title: "sittinon.pc@gmail.com",
-        href: "mailto:sittinon.pc@gmail.com",
+        title: "sittinon.cp@gmail.com",
+        href: "mailto:sittinon.cp@gmail.com",
         icon: Mail,
       },
       { title: "063-416-9328", href: "tel:063-416-9328", icon: Phone },
