@@ -136,12 +136,13 @@ export function Footer() {
 
         <div className="mt-20 pt-8 w-full border-t border-border/30 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-xs font-medium">
-            © {new Date().getFullYear()} Sittinon Chanprathum. Built with
-            Next.js & Tailwind.
+            © {new Date().getFullYear()} Sittinon Chanprathum.
+            {/* Built with
+            Next.js & Tailwind. */}
           </p>
           <div className="flex items-center gap-6">
             <span className="text-[10px] text-muted-foreground uppercase tracking-widest bg-secondary/50 px-3 py-1 rounded-full border border-border/50">
-              Handcrafted with ❤️
+              {/* Handcrafted with ❤️ */}
             </span>
           </div>
         </div>
