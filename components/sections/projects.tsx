@@ -11,16 +11,19 @@ import {
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+type ProjectCategory = "All" | "Web App" | "Mobile App" | "Design";
+
 const projects = [
   {
     title: "Salad Ordering & Menu Management System",
     thaiTitle: "ระบบสั่งสลัดและจัดการเมนู",
+    category: "Web App" as ProjectCategory,
     descriptionEng:
       "A comprehensive salad ordering platform built with Next.js, featuring menu categorization, real-time management, and a responsive Material UI design.",
     descriptionThai:
       "แพลตฟอร์มสั่งสลัดออนไลน์ที่พัฒนาด้วย Next.js รองรับการแยกหมวดหมู่อาหาร การจัดการเมนูแบบเรียลไทม์ และดีไซน์ที่สวยงามด้วย Material UI",
     image:
-      "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop", // รูปภาพแทนสื่อถึงสลัด
+      "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop",
     images: [
       "/images/projects/salad/1.png",
       "/images/projects/salad/2.png",
@@ -32,19 +35,22 @@ const projects = [
       "/images/projects/salad/8.png",
     ],
     tags: ["Next.js", "Material UI", "MySQL", "React"],
-    color: "from-emerald-500/20 to-green-500/20", // ใช้โทนสีเขียวเพื่อให้เข้ากับสลัด
+    githubUrl: "",
+    demoUrl: "",
+    color: "from-emerald-500/20 to-green-500/20",
     borderGlow:
       "group-hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] group-hover:shadow-emerald-500/20",
   },
   {
     title: "Personal Tax Management System",
     thaiTitle: "ระบบจัดการภาษีส่วนบุคคล",
+    category: "Mobile App" as ProjectCategory,
     descriptionEng:
       "A cross-platform mobile application built with Flutter and Express.js for tracking personal income, managing tax deductions, and performing automated tax calculations based on Thai tax rules.",
     descriptionThai:
       "แอปพลิเคชันมือถือสำหรับบันทึกรายได้และจัดการค่าลดหย่อนภาษี พัฒนาด้วย Flutter และ Express.js พร้อมระบบคำนวณภาษีอัตโนมัติตามโครงสร้างภาษีเงินได้บุคคลธรรมดา",
     image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop", // รูปภาพสื่อถึงการคำนวณภาษี/บัญชี
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop",
     images: [
       "/images/projects/tax/1.png",
       "/images/projects/tax/2.png",
@@ -56,13 +62,16 @@ const projects = [
       "/images/projects/tax/8.png",
     ],
     tags: ["Flutter", "Express.js", "MySQL", "Node.js"],
-    color: "from-blue-500/20 to-indigo-500/20", // ใช้โทนสีน้ำเงินสื่อถึงความน่าเชื่อถือและการเงิน
+    githubUrl: "",
+    demoUrl: "",
+    color: "from-blue-500/20 to-indigo-500/20",
     borderGlow:
       "group-hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] group-hover:shadow-blue-500/20",
   },
   {
     title: "Cross-Platform Seamless File Transfer",
     thaiTitle: "ระบบส่งไฟล์ข้ามแพลตฟอร์ม",
+    category: "Design" as ProjectCategory,
     descriptionEng:
       "A conceptual UI/UX design for a seamless cross-platform file sharing application, designed in Figma with focus on accessibility and multi-device support.",
     descriptionThai:
@@ -95,6 +104,8 @@ const projects = [
       "/images/figma/ipad_Share.png",
     ],
     tags: ["Figma", "UI/UX"],
+    githubUrl: "",
+    demoUrl: "",
     color: "from-purple-500/20 to-blue-500/20",
     borderGlow:
       "group-hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] group-hover:shadow-purple-500/20",
@@ -102,6 +113,7 @@ const projects = [
   {
     title: "Mall Management",
     thaiTitle: "จัดการเช่าพื้นที่ห้างสรรพสินค้า",
+    category: "Web App" as ProjectCategory,
     descriptionEng:
       "A backend service and dashboard for managing shopping mall operations, tenant space allocations, and facility maintenance.",
     descriptionThai:
@@ -116,14 +128,16 @@ const projects = [
       "/images/projects/mall/5.png",
     ],
     tags: ["java", "netbeans"],
+    githubUrl: "",
+    demoUrl: "",
     color: "from-emerald-500/20 to-cyan-500/20",
     borderGlow:
       "group-hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] group-hover:shadow-emerald-500/20",
   },
-
   {
     title: "Pizza Selling System",
     thaiTitle: "ร้านขายพิซซ่า",
+    category: "Web App" as ProjectCategory,
     descriptionEng:
       "An online pizza ordering system emphasizing quick customization of orders and real-time delivery tracking.",
     descriptionThai: "ระบบสั่งพิซซ่าออนไลน์ที่ พัฒนาด้วย java และ netbeans",
@@ -138,34 +152,27 @@ const projects = [
       "/images/projects/pizza/4.png",
     ],
     tags: ["java", "netbeans"],
+    githubUrl: "",
+    demoUrl: "",
     color: "from-orange-500/20 to-red-500/20",
     borderGlow:
       "group-hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] group-hover:shadow-orange-500/20",
   },
-  // {
-  //   title: "Movie Ticket Booking",
-  //   thaiTitle: "ระบบจองตั๋วหนัง",
-  //   descriptionEng:
-  //     "A comprehensive movie ticket booking platform allowing users to browse movies, select seats, and purchase tickets seamlessly.",
-  //   descriptionThai:
-  //     "ระบบจองตั๋วหนังแบบครบวงจร ที่ช่วยให้ผู้ใช้สามารถเลือกดูภาพยนตร์, เลือกที่นั่ง และซื้อตั๋วได้อย่างราบรื่น",
-  //   image:
-  //     "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop",
-  //   images: [
-  //     "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop",
-  //   ],
-  //   tags: ["java", "netbeans"],
-  //   color: "from-blue-500/20 to-purple-500/20",
-  //   borderGlow:
-  //     "group-hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] group-hover:shadow-blue-500/20",
-  // },
 ];
+
+const CATEGORIES: ProjectCategory[] = ["All", "Web App", "Mobile App", "Design"];
 
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState<
     (typeof projects)[0] | null
   >(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory>("All");
+
+  const filteredProjects =
+    activeCategory === "All"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory);
 
   useEffect(() => {
     if (selectedProject) {
@@ -220,7 +227,7 @@ export function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-foreground to-muted-foreground mb-4">
             Featured Projects
@@ -228,8 +235,32 @@ export function Projects() {
           <div className="h-1 w-20 bg-primary mx-auto rounded-full" />
         </motion.div>
 
+        {/* Category Filter */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-2 mb-10"
+        >
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all duration-200 cursor-pointer ${
+                activeCategory === cat
+                  ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
+                  : "bg-secondary text-secondary-foreground border-border hover:border-foreground/30 hover:bg-secondary/80"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </motion.div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 20 }}
@@ -269,22 +300,30 @@ export function Projects() {
                     </span>
                   </div>
                   <div className="flex gap-2">
-                    <button
-                      type="button"
-                      onClick={(e) => e.stopPropagation()}
-                      className="text-muted-foreground hover:text-foreground transition-colors z-30 relative"
-                      aria-label="Github link"
-                    >
-                      <Terminal className="w-5 h-5 pointer-events-none" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={(e) => e.stopPropagation()}
-                      className="text-muted-foreground hover:text-foreground transition-colors z-30 relative"
-                      aria-label="Live demo"
-                    >
-                      <ExternalLink className="w-5 h-5 pointer-events-none" />
-                    </button>
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-muted-foreground hover:text-foreground transition-colors z-30 relative"
+                        aria-label="GitHub repository"
+                      >
+                        <Terminal className="w-5 h-5" />
+                      </a>
+                    )}
+                    {project.demoUrl && (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-muted-foreground hover:text-foreground transition-colors z-30 relative"
+                        aria-label="Live demo"
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                      </a>
+                    )}
                   </div>
                 </div>
 
