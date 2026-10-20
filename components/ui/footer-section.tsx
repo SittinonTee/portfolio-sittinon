@@ -1,7 +1,9 @@
 "use client";
 import {
   ArrowUpRight,
+  Check,
   Code2,
+  Copy,
   FileText,
   Github,
   Linkedin,
@@ -9,8 +11,9 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type React from "react";
+import { useState } from "react";
 import type { ComponentProps, ReactNode } from "react";
 
 interface FooterLink {
@@ -60,7 +63,28 @@ const footerLinks: FooterSection[] = [
   },
 ];
 
+const COPYABLE_PREFIXES = ["mailto:", "tel:"];
+
+function isCopyable(href: string) {
+  return COPYABLE_PREFIXES.some((p) => href.startsWith(p));
+}
+
+function getCopyValue(href: string) {
+  for (const prefix of COPYABLE_PREFIXES) {
+    if (href.startsWith(prefix)) return href.slice(prefix.length);
+  }
+  return href;
+}
+
 export function Footer() {
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
+  const handleCopy = (href: string, key: string) => {
+    navigator.clipboard.writeText(getCopyValue(href));
+    setCopiedKey(key);
+    setTimeout(() => setCopiedKey(null), 2000);
+  };
+
   return (
     <section className="w-full bg-background" id="contact">
       <footer className="relative w-full mx-auto flex flex-col items-center justify-center rounded-t-[3rem] border-t border-border/50 dark:bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/5%),transparent)] bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.black/5%),transparent)] px-6 py-12 lg:py-20 overflow-hidden">
@@ -103,30 +127,82 @@ export function Footer() {
                     {section.label}
                   </h3>
                   <ul className="space-y-4">
-                    {section.links.map((link) => (
-                      <li key={link.title}>
-                        <a
-                          href={link.href}
-                          target={
-                            link.href.startsWith("http") ? "_blank" : undefined
-                          }
-                          rel={
-                            link.href.startsWith("http")
-                              ? "noopener noreferrer"
-                              : undefined
-                          }
-                          className="group flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
-                        >
-                          {link.icon && (
-                            <link.icon className="mr-2.5 size-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                    {section.links.map((link) => {
+                      const copyable = isCopyable(link.href);
+                      const copied = copiedKey === link.title;
+                      return (
+                        <li key={link.title}>
+                          {copyable ? (
+                            <button
+                              type="button"
+                              onClick={() => handleCopy(link.href, link.title)}
+                              className="group flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300 cursor-pointer w-full text-left"
+                            >
+                              {link.icon && (
+                                <link.icon
+                                  className={`mr-2.5 size-4 transition-colors ${
+                                    copied
+                                      ? "text-emerald-500"
+                                      : "text-muted-foreground group-hover:text-primary"
+                                  }`}
+                                />
+                              )}
+                              <span className="relative flex-1">
+                                <AnimatePresence mode="wait">
+                                  {copied ? (
+                                    <motion.span
+                                      key="copied"
+                                      initial={{ opacity: 0, y: -6 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      exit={{ opacity: 0, y: 6 }}
+                                      transition={{ duration: 0.2 }}
+                                      className="flex items-center gap-1.5 text-emerald-500 font-medium"
+                                    >
+                                      <Check className="size-3.5" />
+                                      Copied!
+                                    </motion.span>
+                                  ) : (
+                                    <motion.span
+                                      key="label"
+                                      initial={{ opacity: 0, y: 6 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      exit={{ opacity: 0, y: -6 }}
+                                      transition={{ duration: 0.2 }}
+                                      className="flex items-center gap-1.5"
+                                    >
+                                      {link.title}
+                                      <Copy className="size-3 opacity-0 group-hover:opacity-60 transition-opacity" />
+                                    </motion.span>
+                                  )}
+                                </AnimatePresence>
+                                <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+                              </span>
+                            </button>
+                          ) : (
+                            <a
+                              href={link.href}
+                              target={
+                                link.href.startsWith("http") ? "_blank" : undefined
+                              }
+                              rel={
+                                link.href.startsWith("http")
+                                  ? "noopener noreferrer"
+                                  : undefined
+                              }
+                              className="group flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
+                            >
+                              {link.icon && (
+                                <link.icon className="mr-2.5 size-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                              )}
+                              <span className="relative">
+                                {link.title}
+                                <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+                              </span>
+                            </a>
                           )}
-                          <span className="relative">
-                            {link.title}
-                            <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
-                          </span>
-                        </a>
-                      </li>
-                    ))}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               </AnimatedContainer>
@@ -137,8 +213,6 @@ export function Footer() {
         <div className="mt-20 pt-8 w-full border-t border-border/30 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-xs font-medium">
             © {new Date().getFullYear()} Sittinon Chanprathum.
-            {/* Built with
-            Next.js & Tailwind. */}
           </p>
           <div className="flex items-center gap-6">
             <span className="text-[10px] text-muted-foreground uppercase tracking-widest bg-secondary/50 px-3 py-1 rounded-full border border-border/50">
