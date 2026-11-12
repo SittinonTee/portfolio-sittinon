@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/components/language-provider";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 type ProjectCategory = "All" | "Web App" | "Mobile App" | "Design";
 
@@ -115,7 +117,7 @@ const projects = [
     thaiTitle: "จัดการเช่าพื้นที่ห้างสรรพสินค้า",
     category: "Web App" as ProjectCategory,
     descriptionEng:
-      "A backend service and dashboard for managing shopping mall operations, tenant space allocations, and facility maintenance.",
+      "A Java application built with NetBeans for managing shopping mall rental spaces and tenant allocations.",
     descriptionThai:
       "ระบบจัดการพื้นที่เช่าในห้างสรรพสินค้า ที่ช่วยให้ผู้ใช้สามารถจัดการพื้นที่เช่า, การจัดสรรพื้นที่ ได้อย่างมีประสิทธิภาพ",
     image:
@@ -138,8 +140,7 @@ const projects = [
     title: "Pizza Selling System",
     thaiTitle: "ร้านขายพิซซ่า",
     category: "Web App" as ProjectCategory,
-    descriptionEng:
-      "An online pizza ordering system emphasizing quick customization of orders and real-time delivery tracking.",
+    descriptionEng: "A pizza ordering system built with Java and NetBeans.",
     descriptionThai: "ระบบสั่งพิซซ่าออนไลน์ที่ พัฒนาด้วย java และ netbeans",
     image:
       "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800&auto=format&fit=crop",
@@ -160,9 +161,15 @@ const projects = [
   },
 ];
 
-const CATEGORIES: ProjectCategory[] = ["All", "Web App", "Mobile App", "Design"];
+const CATEGORIES: ProjectCategory[] = [
+  "All",
+  "Web App",
+  "Mobile App",
+  "Design",
+];
 
 export function Projects() {
+  const { language } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<
     (typeof projects)[0] | null
   >(null);
@@ -295,8 +302,11 @@ export function Projects() {
                     <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
                       {project.title}
                     </h3>
-                    <span className="text-xs text-muted-foreground font-medium px-2 py-0.5 rounded-full border border-border bg-background/50">
-                      {project.thaiTitle}
+                    <span
+                      lang={language}
+                      className="text-xs text-muted-foreground font-medium px-2 py-0.5 rounded-full border border-border bg-background/50"
+                    >
+                      {language === "th" ? project.thaiTitle : project.category}
                     </span>
                   </div>
                   <div className="flex gap-2">
@@ -435,16 +445,29 @@ export function Projects() {
 
               {/* ฝั่งขวา: รายละเอียด (Info) */}
               <div className="w-full lg:w-1/3 p-6 md:p-10 flex flex-col overflow-y-auto border-t lg:border-t-0 lg:border-l border-border bg-card">
+                <div className="mb-5 flex pr-12">
+                  <LanguageSwitcher />
+                </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
                   {selectedProject.title}
                 </h3>
-                <span className="text-sm border border-primary/30 text-primary w-fit px-3 py-1 rounded-full font-medium mb-6">
-                  {selectedProject.thaiTitle}
+                <span
+                  lang={language}
+                  className="text-sm border border-primary/30 text-primary w-fit px-3 py-1 rounded-full font-medium mb-6"
+                >
+                  {language === "th"
+                    ? selectedProject.thaiTitle
+                    : selectedProject.category}
                 </span>
 
                 <div className="space-y-4 mb-8">
-                  <p className="text-muted-foreground text-sm md:text-[15px] leading-relaxed">
-                    {selectedProject.descriptionThai}
+                  <p
+                    lang={language}
+                    className="text-muted-foreground text-sm md:text-[15px] leading-relaxed"
+                  >
+                    {language === "en"
+                      ? selectedProject.descriptionEng
+                      : selectedProject.descriptionThai}
                   </p>
                   {/* <p className="text-muted-foreground text-sm md:text-[15px] leading-relaxed opacity-80">
                     {selectedProject.descriptionEng}

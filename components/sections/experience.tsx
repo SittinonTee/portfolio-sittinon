@@ -4,9 +4,40 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Plus, X, ZoomIn } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/components/language-provider";
 
 // 1. เตรียมข้อมูล (ใส่รูปภาพจริงของคุณตรง property 'image')
 const projects = [
+  {
+    id: "ai-document-validation",
+    title: "Full Stack Developer — AI Automation Document Validation",
+    company: "Silkspan Co., Ltd.",
+    descriptionEng:
+      "Developed an end-to-end insurance document processing system to retrieve documents from LINE, classify and extract data, match insurance policies, and automatically transfer documents to the existing DMS. Implemented an AI-powered pipeline using Google Document AI (OCR) for data extraction and the Anthropic Claude API for document classification. Built a document review console with Next.js 15 and AG Grid for staff to review, approve, and process documents in bulk, with a dashboard for performance monitoring.",
+    descriptionThai:
+      "พัฒนาระบบประมวลผลเอกสารประกันภัยแบบครบวงจร ตั้งแต่รับเอกสารจาก LINE จำแนกประเภทและสกัดข้อมูล จับคู่กรมธรรม์ประกันภัย ไปจนถึงส่งเอกสารเข้าระบบ DMS เดิมโดยอัตโนมัติ ใช้ Google Document AI (OCR) สำหรับสกัดข้อมูล และ Anthropic Claude API สำหรับจำแนกเอกสาร พร้อมพัฒนาหน้าตรวจสอบเอกสารด้วย Next.js 15 และ AG Grid ให้เจ้าหน้าที่ตรวจสอบ อนุมัติ และประมวลผลเอกสารเป็นชุด รวมถึงแดชบอร์ดติดตามประสิทธิภาพการทำงาน",
+    technologies: [
+      "Next.js 15",
+      "Node.js",
+      "AG Grid",
+      "Google Document AI",
+      "Anthropic Claude API",
+      "Microsoft SQL Server",
+    ],
+    dates: "July 2026",
+    images: [
+      "/images/work/silkspan/realtime-dashboard-demo.webp",
+      "/images/work/silkspan/document-review-demo.webp",
+      "/images/work/silkspan/customer-documents-demo.webp",
+      "/images/work/silkspan/transaction-matching-demo.webp",
+      "/images/work/silkspan/transaction-documents-demo.webp",
+      "/images/work/silkspan/customer-overview-demo.webp",
+      "/images/work/silkspan/daily-report-demo.webp",
+      "/images/work/silkspan/monthly-report-demo.webp",
+      "/images/work/silkspan/document-pipeline-portfolio-redacted.webp",
+      "/images/work/silkspan/system-architecture-portfolio-redacted.webp",
+    ],
+  },
   {
     id: "rsu-job-fair",
     title: "RSU Job Fair Platform",
@@ -85,6 +116,7 @@ const projects = [
 ];
 
 export function Experience() {
+  const { language } = useLanguage();
   const [activeFeature, setActiveFeature] = useState(0);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -187,8 +219,13 @@ export function Experience() {
                           )}
                         </div>
                       </div>
-                      <p className="text-sm md:text-[15px] leading-relaxed text-muted-foreground">
-                        {project.descriptionThai}
+                      <p
+                        lang={language}
+                        className="text-sm md:text-[15px] leading-relaxed text-muted-foreground"
+                      >
+                        {language === "en"
+                          ? project.descriptionEng
+                          : project.descriptionThai}
                       </p>
 
                       {/* {project.id === "color" && (

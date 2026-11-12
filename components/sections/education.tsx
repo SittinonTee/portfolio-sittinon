@@ -8,7 +8,7 @@ const education = [
     institution: "Rangsit University",
     period: "2023 \u2013 Present",
     degree: "College of Digital Innovation Technology : Computer Science",
-    details: "GPA: 3.82",
+    details: "GPA: 3.84",
     icon: <GraduationCap className="w-5 h-5 text-foreground" />,
   },
   {

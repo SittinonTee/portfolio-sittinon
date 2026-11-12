@@ -69,7 +69,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               </div>
               {/* Iframe for PDF viewing */}
               <iframe
-                src="/resume.pdf#view=FitH"
+                src="/resume/resume.pdf#view=FitH"
                 className="absolute inset-0 w-full h-full border-none z-10"
                 title="Sittinon Resume Preview"
               />
