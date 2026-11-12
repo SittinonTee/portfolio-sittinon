@@ -1,10 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ArrowUp, Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { Button } from "@/components/ui/button";
 
 // const navLinks = [
@@ -17,14 +18,6 @@ const navTitles = ["About", "Experience", "Projects", "Education", "Skills"];
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const [showBackToTop, setShowBackToTop] = useState(false);
-
-  // Scroll progress
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
 
   // Back to top visibility
   useEffect(() => {
@@ -41,24 +34,18 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="items-center px-6 lg:px-8 fixed top-0 left-0 right-0 z-50"
+        className="items-center px-4 sm:px-6 lg:px-8 fixed top-0 left-0 right-0 z-50"
       >
-        {/* Scroll Progress Bar */}
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary origin-left"
-          style={{ scaleX }}
-        />
-
         <div className="flex h-16 items-center justify-between">
           {/* Brand Name Only */}
           <div className="flex items-center">
-            <span className="text-xl font-bold text-foreground">
+            <span className="text-lg sm:text-xl font-bold text-foreground">
               Sittinon.dev
             </span>
           </div>
 
           {/* Glassmorphic Navigation Pills */}
-          <div className="hidden md:flex items-center space-x-1 rounded-full bg-foreground/5 backdrop-blur-xl border border-border p-1 -mr-6">
+          <div className="hidden lg:flex items-center space-x-1 rounded-full bg-foreground/5 backdrop-blur-xl border border-border p-1 -mr-6">
             {navTitles.map((title) => (
               <Link
                 key={title}
@@ -71,7 +58,8 @@ export default function Navbar() {
           </div>
 
           {/* CTA Button */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <LanguageSwitcher />
             <Button
               variant="ghost"
               size="icon"
@@ -92,7 +80,7 @@ export default function Navbar() {
               }
             >
               Contact
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="hidden sm:block ml-2 h-4 w-4" />
             </Button>
           </div>
         </div>

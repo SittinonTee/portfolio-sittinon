@@ -107,7 +107,7 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-4">
               <a
-                href="/resume.pdf"
+                href="/resume/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-xs font-semibold hover:bg-secondary/80 transition-colors border border-border"
